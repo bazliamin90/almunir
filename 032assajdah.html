@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>As-Sajdah</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/baz.png">
+    <script src="assets/js/header.js"></script>
+</head>
+
+<body>
+
+<header-component></header-component>
+    
+<header>
+    <h1>032. As-Sajdah</h1>
+</header>
+
+<main>
+    <div class="centered">
+        <label for="image-selector">Select Page:</label>
+        <select id="image-selector">
+            <!-- JavaScript will populate these options -->
+        </select>
+        <div class="navigation-buttons">
+            <button id="previous-button">Previous</button>
+            <button id="next-button">Next</button>
+        </div>
+    </div>
+        
+    <div id="image-container">
+        <img id="selected-image" src="" alt="Selected Image">
+    </div>
+</main>
+
+<a href='#' class="stt" title="scroll to top">▲</a>
+
+</body>
+
+<script>
+	document.addEventListener('DOMContentLoaded', function() {
+        const imageSelector = document.getElementById('image-selector');
+        const imageContainer = document.getElementById('selected-image');
+        const previousButton = document.getElementById('previous-button');
+        const nextButton = document.getElementById('next-button');
+
+        const startImageIndex = 203;
+        const endImageIndex = 243;
+        let currentImageIndex = startImageIndex;
+        
+        // Populate the dropdown with options
+        for (let i = startImageIndex; i <= endImageIndex; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = `Page ${i}`;
+            imageSelector.appendChild(option);
+        }
+
+        // Set the default selected value and display the first image by default
+        imageSelector.value = startImageIndex;
+        updateImage(startImageIndex);
+
+        // Event listener to display the selected image
+        imageSelector.addEventListener('change', function() {
+            const selectedValue = parseInt(this.value);
+            currentImageIndex = selectedValue;
+            updateImage(selectedValue);
+        });
+
+        // Event listener for the Previous button
+        previousButton.addEventListener('click', function() {
+            if (currentImageIndex > startImageIndex) {
+                currentImageIndex--;
+                updateImage(currentImageIndex);
+                imageSelector.value = currentImageIndex;
+            }
+        });
+
+        // Event listener for the Next button
+        nextButton.addEventListener('click', function() {
+            if (currentImageIndex < endImageIndex) {
+                currentImageIndex++;
+                updateImage(currentImageIndex);
+                imageSelector.value = currentImageIndex;
+            }
+        });
+
+        // Update the displayed image and button states
+        function updateImage(index) {
+            imageContainer.src = `https://github.com/bazliamin90/img/blob/main/032.assajdah/${index}.jpg?raw=true`;
+            imageContainer.alt = `Image ${index}`;
+            updateButtons(index);
+        }
+
+        // Update the states of Previous and Next buttons
+        function updateButtons(index) {
+            previousButton.disabled = index <= startImageIndex;
+            nextButton.disabled = index >= endImageIndex;
+        }
+    });
+</script>
+</html>
