@@ -10,7 +10,7 @@ headerTemplate.innerHTML = `
     }
 
 	#nav{
-      border-bottom:2px dashed black;
+      border-bottom:2px solid black;
       list-style:none;
       margin:0;
       padding:10px;
