@@ -130,12 +130,12 @@ td{
 		text-decoration: none;
 	}
 
-	.stt:active {
+		.stt:active {
 		color: white;
 		background-color: black;
-	}
+		}
 
-#image-container {
+		#image-container {
             text-align: center;
             margin-top: 20px;
         }
@@ -153,7 +153,8 @@ td{
         }
         .centered label,
         .centered select,
-        .navigation-buttons button {
+        .navigation-buttons button,
+		.ayat {
         font-family: monospace;
         }
         .navigation-buttons {
@@ -163,6 +164,19 @@ td{
             background-color: grey;
             cursor: not-allowed;
         }
+		
+	.side-by-side {
+		display: flex;
+		flex-wrap: wrap; /* allow wrapping to the next line */
+		align-items: center;
+		justify-content: center;
+		}
+		
+	.stacked-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		}
 		
 	.viewer {
 		background-color: #333;
